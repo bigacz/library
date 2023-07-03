@@ -8,15 +8,46 @@
   <script src="index.js" defer></script>
 </head>
 <body>
-  <header>
-    <h1>Library</h1>
-  </header>
-  <nav>
-    <p>Elo</p>
-  </nav>
-  <main>
-    <button id="addButton">+</button>
-  </main>
+  <div id="page">
+    <header>
+      <h1>Library</h1>
+    </header>
+    <nav>
+      <p>Elo</p>
+    </nav>
+    <main>
+
+      <button id="add-button">+</button>
+    </main>
+
+  </div>
+
+  <div class="form-box">
+    <form id="form-add" action="">
+      <ul>
+        <li>
+          <label for="name">Name:</label>
+          <input type="text" name="name" id="name">
+        </li>
+        <li>
+          <label for="author">Author:</label>
+          <input type="text" name="author" id="author">
+        </li>
+        <li>
+          <label for="pages">Pages:</label>
+          <input type="tel" name="pages" id="pages">
+        </li>
+        <li>
+          <label for="read">Read:</label>
+          <input type="checkbox" name="read" id="read">
+        </li>
+        <li>
+          <button type="submit">Submit</button>
+          <button id="button" type="button">Cancel</button>
+        </li>
+      </ul>
+    </form>
+  </div>
   
 </body>
 </html>

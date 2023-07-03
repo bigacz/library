@@ -6,22 +6,35 @@
     --white: #e4e4e7;
 }
 
+ul {
+    list-style-type: none;
+}
+
 button {
     border: none;
     color: inherit;
+    background-color: var(--gray);
+    padding: 0.5rem 1rem;
+}
+
+button:active {
+    transform: scale(1.05);
 }
 
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 20px;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
 body {
-    height: 100vh;
     background-color: var(--light-gray);
+    height: 100vh;
+}
+
+#page {
+    position: relative;
     color: var(--white);
     display: grid;
     grid-template-areas: 
@@ -54,6 +67,19 @@ main > * {
     border-radius: 7px;
 }
 
-#addButton {
+#add-button {
     font-size: 10rem;
 }
+
+.form-box {
+    height: 100%;
+    width: 100%;
+}
+
+#form-add {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
