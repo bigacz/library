@@ -1,9 +1,28 @@
 :root {
     --black: #18181b;
-    --dark-gray: #27272a;
-    --gray: #3f3f46;
+    --dark-gray: #3f3f46;
+    --gray: #52525b;
     --light-gray: #71717a;
-    --white: #e4e4e7;
+    --silver: #a1a1aa;
+    --white: #f7fee7;
+}
+
+body {
+    background-color: var(--silver);
+    height: 100vh;
+}
+
+input[type="text"], input[type="tel"] {
+    background-color: var(--light-gray);
+    border: none;
+    outline: none;
+    height: 2.5rem;
+    width: 25rem;
+    border-radius: 2rem;
+}
+
+label {
+    color: var(--white)
 }
 
 ul {
@@ -13,7 +32,7 @@ ul {
 button {
     border: none;
     color: inherit;
-    background-color: var(--gray);
+    background-color: var(--light-gray);
     padding: 0.5rem 1rem;
 }
 
@@ -28,10 +47,6 @@ button:active {
     margin: 0;
 }
 
-body {
-    background-color: var(--light-gray);
-    height: 100vh;
-}
 
 #page {
     position: relative;
@@ -83,3 +98,12 @@ main > * {
     transform: translate(-50%, -50%);
 }
 
+#form-add li {
+    position: relative;
+}
+
+#form-add label:not(label[for="read"]) {
+    position: absolute;
+    top: -10px;
+    left: 10px;
+}
