@@ -11,43 +11,43 @@
   <div id="page">
     <header>
       <h1>Library</h1>
+      <h3>bigacz</h3>
     </header>
-    <nav>
-      <p>Elo</p>
-    </nav>
     <main>
 
       <button id="add-button">+</button>
     </main>
-
   </div>
 
-  <div class="form-box">
-    <form id="form-add" action="">
+  
+  <div id="form-box">
+
+    <form id="form" action="">
       <ul>
         <li>
-          <label for="name">Name:</label>
-          <input type="text" name="name" id="name">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" required>
         </li>
         <li>
-          <label for="author">Author:</label>
+          <label for="author">Author</label>
           <input type="text" name="author" id="author">
         </li>
         <li>
-          <label for="pages">Pages:</label>
-          <input type="tel" name="pages" id="pages">
+          <label for="pages">Pages</label>
+          <input type="tel" name="pages" id="pages" pattern="\d{1,5}" title="Use numbers only, max. 99999">
         </li>
         <li>
-          <label for="read">Read:</label>
+          <label for="read">Read</label>
           <input type="checkbox" name="read" id="read">
         </li>
         <li>
-          <button id="submit"type="submit">Submit</button>
+          <button id="submit" type="submit">Submit</button>
           <button id="cancel" type="button">Cancel</button>
         </li>
       </ul>
     </form>
   </div>
+
   
 </body>
 </html>

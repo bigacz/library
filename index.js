@@ -12,11 +12,6 @@ function Book(title, author, pages, read, id) {
   this.id = id
 }
 
-
-Book.prototype.displayNode = function() {
-
-}
-
 const library = {
   storage: [],
   bookCount: 0,
@@ -25,10 +20,11 @@ const library = {
     const book = new Book(title, author, pages, read, (this.bookCount));
 
     this.storage.push(book);
-    this.display();
     this.bookCount++;
+    this.display();
   },
 
+  
   remove: function(id) {
     const bookNode = mainNode.querySelector(`div[data-book-id="${id}"]`)
     const index = this.findStorageId(id);
@@ -43,39 +39,46 @@ const library = {
 
   createNode: function(book) {
     const bookNode = document.createElement('div');
-    let isChecked = book.read ? 'checked' : '';
-
+    const isChecked = book.read ? 'checked' : '';
+    let pages = book.pages ? `${book.pages} pages` : 'pages not specified';
+    let author = book.author ? `${book.author}` : 'author not specified';
+    
     bookNode.setAttribute('data-book-id', `${book.id}`)
     bookNode.insertAdjacentHTML('beforeend', `
       <h2>${book.title}</h2>
-      <p>By: ${book.author}</p>
-      <p>Pages: ${book.pages}</p>
-      <label for="read${book.id}">Read:</label>
-      <input type="checkbox" name="read${book.id}" id="read${book.id}"  ${isChecked}>
+      <p>${author}</p>
+      <p>${pages}</p>
+      <button class="readButton" type="button">Read</button>
       <button class="removeButton" type="button">Remove</button>`
     );
     
-    mainNode.insertBefore(bookNode, addButton)
+    mainNode.appendChild(bookNode);
 
     const removeButton = bookNode.querySelector('button.removeButton')
+    const readButton = bookNode.querySelector('button.readButton')
+
+    if(book.read) {
+      readButton.classList.toggle('read')
+    }
+
     removeButton.addEventListener('click', (e) => {
       id = e.currentTarget.parentElement.getAttribute('data-book-id');
       library.remove(id);
     })
 
-    const checkbox = bookNode.querySelector('[id^="read"]');
-    checkbox.addEventListener('change', (e) => {
-      const id =  e.currentTarget.parentElement.getAttribute('data-book-id');
+    readButton.addEventListener('click', (e) => {
+      const id = e.currentTarget.parentElement.getAttribute('data-book-id');
       const storageId = this.findStorageId(id);
+
       this.storage[storageId].read = !this.storage[storageId].read;
 
-      
+      readButton.classList.toggle('read')
     })
   },
 
   detachAll: function() {
     while(mainNode.childElementCount > 1) {
-      mainNode.removeChild(mainNode.firstChild);
+      mainNode.removeChild(mainNode.lastChild);
     }
   },
 
@@ -88,8 +91,9 @@ const library = {
 }
 
 const form = {
-  inputs: document.querySelectorAll('#form-add input'),
-  node: document.getElementById('form-add'),
+  inputs: document.querySelectorAll('#form input'),
+  boxNode: document.getElementById('form-box'),
+  formNode: document.getElementById('form'),
 
   getValues: function() {
     let values = [];
@@ -100,20 +104,32 @@ const form = {
         values.push(element.value);
       }
     })
-
     return values
   },
 
   toggle: function() {
-    const form = document.getElementById('form-add');
-    form.style.display = (form.style.display == 'none') ? 'block' : 'none';
+    this.boxNode.style.display =
+    (this.boxNode.style.display == 'none') ? 'block' : 'none';
+  },
+
+  checkValidity: function() {
+    let valid = true;
+    this.inputs.forEach(element => {
+      if (!element.checkValidity()) {
+        valid = false;
+      }
+    })
+    return valid
   }
 }
 
 submitButton.addEventListener('click', (event) => {
-  library.add(...form.getValues());
-  form.toggle();
-  event.preventDefault();
+  if(form.checkValidity()) {
+    library.add(...form.getValues());
+    form.toggle();
+    event.preventDefault();
+  }
+
 })
 
 addButton.addEventListener('click', () => {
