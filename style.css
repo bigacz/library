@@ -28,7 +28,6 @@ input[type="number"] {
     border: none;
     outline: none;
     height: 3rem;
-    width: 30rem;
     border-radius: 2rem;
     padding: 1rem;
 
@@ -158,7 +157,7 @@ main {
     background-color: var(--dark-gray);
     border-radius: 1rem;
     padding: 2rem 1rem;
-
+    width: min(500px, 90vw);
 }
 
 #form ul {
