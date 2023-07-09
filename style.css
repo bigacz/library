@@ -14,27 +14,38 @@
 }
 
 body {
-    background-color: var(--silver);
+    background-color: var(--silver)
+
 }
 
 input[type="text"], 
 input[type="tel"],
 input[type="number"] {
     background-color: var(--light-gray);
-    color: yellow;
+    color: var(--white);
+    font-weight: 600;
     font-size: 1rem;
     border: none;
     outline: none;
-    height: 2.5rem;
-    width: 25rem;
+    height: 3rem;
+    width: 30rem;
     border-radius: 2rem;
     padding: 1rem;
+
 }
 
 label {
+    background-color: var(--gray);
+    border-radius: 7px;
+    padding: 0rem 0.4rem;
     color: var(--white);
+    font-size: 1.2rem;
     font-weight: 600;
+    -webkit-box-shadow: 8px 8px 24px -5px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 24px -5px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 24px -5px rgba(66, 68, 90, 1);
 }
+
 
 ul {
     list-style-type: none;
@@ -42,13 +53,16 @@ ul {
 
 button {
     border: none;
-    color: inherit;
+    color: var(--white);
+    font-weight: 600;
     background-color: var(--light-gray);
     padding: 0.5rem 1rem;
+    border-radius: 7px;
+    transition: all 0.2s;
 }
 
 button:active {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 * {
@@ -67,77 +81,108 @@ button:active {
 }
 
 header {
+    background-color: var(--gray);
     padding: 10px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
+    -webkit-box-shadow: 0px 1px 16px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 1px 16px 0px rgba(66, 68, 90, 1);
+    box-shadow: 0px 1px 16px 0px rgba(66, 68, 90, 1);
 }
 
 main {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, 400px);
-    grid-auto-rows: minmax(max-content, 250px);
+    grid-auto-rows: max-content minmax(max-content, 250px);
     gap: 0.5rem;
     padding: 1vw;
 }
 
-main > * {
+.button-node {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.button-node button {
+    font-weight: 600;
+    font-size: 3rem;
+    border-radius: 7px;
+    -webkit-box-shadow: 8px 8px 24px -11px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 24px -11px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 24px -11px rgba(66, 68, 90, 1);
+}
+
+.book-node {
     background-color: var(--gray);
     padding: 1rem;
     border-radius: 7px;
-}
-
-main > div {
     text-align: center;
     display: grid;
     gap: 0.5rem;
     font-size: 1.3rem;
+    -webkit-box-shadow: 7px 10px 21px -5px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 7px 10px 21px -5px rgba(66, 68, 90, 1);
+    box-shadow: 7px 10px 21px -5px rgba(66, 68, 90, 1);
 }
 
-main > div button {
+.book-node button {
     font-weight: 900;
     font-size: 1rem;
     border-radius: 7px;
 }
 
-
-.readButton {
+.read-false {
     background-color: var(--red);
 }
 
-.read {
+.read-true {
     background-color: var(--green)
 }
 
-#add-button {
-    font-size: 10rem;
+#backdrop {
+    position:fixed;
+    background-color: rgba(0, 0, 0, 0.8);
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
 }
 
 #form {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #18181b40;
+    transform: translate(-50%, -60%);
+    background-color: var(--dark-gray);
     border-radius: 1rem;
     padding: 2rem 1rem;
 
 }
 
-
 #form ul {
     display: grid;
-    gap: 1rem;
-    text-align: center;
+    gap: 1.5rem;
 }
 
 #form li {
+    display: flex;
+    gap: 1rem;
     position: relative;
+}
+
+#form li * {
+    flex: 1;
+}
+
+#form button {
+    font-size: 1.3rem;
+    padding: 0.8rem;
 }
 
 #form label:not(label[for="read"]) {
     position: absolute;
-    top: -10px;
+    top: -13px;
     left: 10px;
 }
