@@ -172,6 +172,4 @@ form.toggle();
 library.add('A Tale of Two Cities', 'Charles Dickens', '448', false)
 library.add('1984', 'George Orwell', '352', true)
 library.add('Fahrenheit 451', 'Ray Bradbury', '227', false)
-
-
-
+library.add('Brave New World', 'Aldous Huxley', '231', false)
