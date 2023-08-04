@@ -28,13 +28,13 @@ const library = {
 
   remove: function(id) {
     const bookNode = mainNode.querySelector(`div[data-book-id="${id}"]`)
-    const index = this.findStorageId(id);
+    const index = this.findstorageId(id);
 
     bookNode.remove();
     this.storage.splice(index, 1);
   },
 
-  findStorageId: function(id) {
+  findstorageId: function(id) {
     return this.storage.findIndex((e) => e.id == id);
   },
 
@@ -70,7 +70,7 @@ const library = {
 
     readButton.addEventListener('click', (e) => {
       const id = e.currentTarget.parentElement.getAttribute('data-book-id');
-      const storageId = this.findStorageId(id);
+      const storageId = this.findstorageId(id);
 
       this.storage[storageId].read = !this.storage[storageId].read;
 
