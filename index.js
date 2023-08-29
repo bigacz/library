@@ -5,12 +5,15 @@ const submitForm = document.getElementById('submit');
 const cancelForm = document.getElementById('cancel');
 const readForm = document.getElementById('form-read')
 
-function Book(title, author, pages, read, id) {
-  this.title = title,
-  this.author = author,
-  this.pages = pages,
-  this.read = read,
-  this.id = id
+class Book {
+
+  constructor(title, author, pages, read, id) {
+    this.title = title,
+    this.author = author,
+    this.pages = pages,
+    this.read = read,
+    this.id = id
+  }
 }
 
 const library = {
@@ -160,7 +163,6 @@ submitForm.addEventListener('click', (event) => {
     form.toggle();
     event.preventDefault();
   }
-
 })
 
 cancelForm.addEventListener('click', (e) => {
